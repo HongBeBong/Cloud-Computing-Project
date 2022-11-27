@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Current Wheather Website</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="head-nav">
+            <h3
+                style="font-size:10px; color:yellow; font-weight:bold; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                Cloud Computing Final Project - Group 6</h3>
+        </div>
+        <div class="logo-heading">
+            <img src="{{url_for('static', filename='img/weather-app-logo.png')}}" alt="Cloud Wheather">
+        </div>
+        <div class="container-data">
+            <form action="/" method="post">
+                <input type="text" class="text-box" name="city" placeholder="Nhập tên thành phố: London, Paris,...">
+                <button type="submit" class="btn">XEM</button>
+            </form>
+        </div>
+        <br>
+        {% if city_name %}
+        <div class="show-result">
+            <div class="output">
+                <h3
+                    style="color:black; font-size:35px; font-weight:bold; font-family:'Courier New', Courier, monospace; text-transform: uppercase;">
+                    {{city_name}}</h3>
+            </div>
+            <br>
+            <div class="output">
+                <h3
+                    style="color:green; font-size:22px; font-weight:bold;  font-family:'Courier New', Courier, monospace; ">
+                    WEATHER:</h3>{{condition}}
+            </div>
+            {% if condition=='Rain' %}
+            <div class="output-logo">
+                <img src="{{url_for('static', filename='img/rain_light.png')}}">
+            </div>
+            {% endif %}
+            {% if condition=='Clear' %}
+            <div class="output-logo">
+                <img src="{{url_for('static', filename='img/clear-sky-new.png')}}">
+            </div>
+            {% endif %}
+            {% if condition=='Clouds' %}
+            <div class="output-logo">
+                <img src="{{url_for('static', filename='img/clouds-new.png')}}">
+            </div>
+            {% endif %}
+            {% if condition=='Thunderstorm' %}
+            <div class="output-logo">
+                <img src="{{url_for('static', filename='img/storm.png')}}">
+            </div>
+            {% endif %}
+            {% if condition=='Haze' %}
+            <div class="output-logo">
+                <img src="{{url_for('static', filename='img/fog.png')}}">
+            </div>
+            {% endif %}
+            <div class="output-desc">{{desc}}</div>
+            <div class="output">
+                <h3
+                    style="color:green; font-size:22px; font-weight:bold;  font-family:'Courier New', Courier, monospace; ">
+                    NHIỆT ĐỘ:</h3>{{temperature}} °C
+            </div>
+            <div class="output">
+                <h3
+                    style="color:green; font-size:22px; font-weight:bold;  font-family:'Courier New', Courier, monospace; ">
+                    ĐỘ ẨM:</h3>{{humidity}} %
+            </div>
+            <div class="output">
+                <h3
+                    style="color:green; font-size:22px; font-weight:bold;  font-family:'Courier New', Courier, monospace; ">
+                    ÁP LỰC:</h3>{{pressure}} mb
+            </div>
+            <div class="output">
+                <h3
+                    style="color:green; font-size:22px; font-weight:bold;  font-family:'Courier New', Courier, monospace; ">
+                    SỨC GIÓ:</h3>{{wind}} Km/h
+            </div>
+        </div>
+        {% else %}
+        <h3
+            style="color:red; padding:30px;font-size:35px; font-weight:bold; font-family:'Courier New', Courier, monospace; text-transform: uppercase;">
+            NHẬP TÊN THÀNH PHỐ ĐỂ KIỂM TRA BÁO CÁO THỜI TIẾT HIỆN TẠI</h3>
+        {% endif %}
+        <!-- <div class="head-git">
+            <h2>For Source Code of this Project , Visit our GIT-HUB page <a
+                    href="https://github.com/R-Coder07/Cloud-Wheather-Website" class="nav__link">Github-Page</a></h2>
+        </div> -->
+        <div class="head">
+            <h2> Copyright &copy; Cloud Weather 2022</h2>
+        </div>
+</body>
+
+</html>
